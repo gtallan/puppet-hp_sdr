@@ -29,6 +29,7 @@ define hp_sdr::repo (
   String $dist,
   String $release,
   String $arch,
+  String $includepkgs = '',
   String[1] $version,
   String[1] $url_base,
   String[1] $url_repo,
@@ -50,6 +51,9 @@ define hp_sdr::repo (
         gpgcheck => bool2num($gpgcheck),
         descr    => $_descr,
         baseurl  => $_url,
+      }
+      if $includepkgs != '' {
+        Yumrepo[$_name] { includepkgs =>  $includepkgs }
       }
     }
 

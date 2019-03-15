@@ -16,17 +16,19 @@ class hp_sdr::spp (
   $release  = $hp_sdr::params::release,
   $arch     = $hp_sdr::params::arch,
   $url_base = $hp_sdr::params::url_base,
-  $url_repo = $hp_sdr::params::url_repo
+  $url_repo = $hp_sdr::params::url_repo,
+  $includepkgs = ''
 ) inherits hp_sdr::params {
 
   hp_sdr::repo { 'spp':
-    ensure   => $ensure,
-    version  => $version,
-    gpgcheck => $gpgcheck,
-    dist     => $dist,
-    release  => $release,
-    arch     => $arch,
-    url_base => $url_base,
-    url_repo => $url_repo,
+    ensure      => $ensure,
+    version     => $version,
+    gpgcheck    => $gpgcheck,
+    dist        => $dist,
+    release     => $release,
+    arch        => $arch,
+    url_base    => $url_base,
+    url_repo    => $url_repo,
+    includepkgs => $includepkgs,
   }
 }
